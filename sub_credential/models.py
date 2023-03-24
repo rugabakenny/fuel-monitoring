@@ -31,6 +31,9 @@ class Company(models.Model):
 class Technician(models.Model):
     name = models.CharField(max_length = 255 ,null=True)  
     companyname = models.CharField(max_length = 255 ,null=True)  
+
+    def __str__(self):
+        return self.name
     
     
 class Station(models.Model):
@@ -46,6 +49,7 @@ class Station(models.Model):
 class island(models.Model):
     islandname = models.CharField(null=True,max_length=255)
     stationid = models.ForeignKey(Station,on_delete=models.CASCADE)
+    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
     
 
     def __str__(self):
@@ -54,6 +58,8 @@ class island(models.Model):
 class Tank(models.Model):
     tankname = models.CharField(max_length=255,null=True)
     fueltype = models.CharField(max_length=255,null=True)
+    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
+    
     
 
     def __str__(self):
@@ -62,7 +68,8 @@ class Tank(models.Model):
 class Pump(models.Model):
     pumpname = models.CharField(null=True,max_length=255)
     islandid = models.ForeignKey(island,on_delete=models.CASCADE)
-    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE)
+    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
+
 
     def __str__(self):
         return self.pumpname
@@ -72,6 +79,7 @@ class Nozzle(models.Model):
     fueltype = models.CharField(max_length=255, null=True)
     pumpid = models.ForeignKey(Pump,on_delete=models.CASCADE)
     tankid = models.ForeignKey(Tank,on_delete=models.CASCADE)
+    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
 
     def __str__(self):
         return self.nozzlename
