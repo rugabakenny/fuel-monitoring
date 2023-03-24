@@ -6,7 +6,7 @@ from .models import Company
 # Register your models here.
 
 class Accountline(admin.StackedInline):
-    model = Accountuser
+    model = Accountuser 
     can_delete = False
     verbose_name_plural = 'Accountusers'
 
@@ -23,3 +23,4 @@ admin.site.register(Pump)
 admin.site.register(Nozzle)
 admin.site.register(Meters)
 admin.site.register(Consumption)
+admin.site.register(Technician)

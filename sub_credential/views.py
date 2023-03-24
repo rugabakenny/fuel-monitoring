@@ -10,6 +10,7 @@ from .serializers import SerailizerPump, SerailizerUser
 from .serializers import SerailizerNozzle, SerailizerUser
 from .serializers import SerailizerMeters, SerailizerUser
 from .serializers import SerailizerConsumption, SerailizerUser
+from .serializers import SerailizerTechnician, SerailizerUser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,6 +25,7 @@ from .models import Pump
 from .models import Nozzle
 from .models import Meters
 from .models import Consumption
+from .models import Technician
 
 
 # Create your views here.
@@ -223,6 +225,28 @@ class getConsumption(generics.GenericAPIView, mixins.ListModelMixin, mixins.Crea
             
             return Response(data=serializer.data,status=status.HTTP_201_CREATED)
         return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+class getTechnician(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
+    serializer_class= SerailizerTechnician
+    serializer_classes= SerailizerTechnician
+    queryset= Technician.objects.all()
+    # lookup_field='id'
+    def get(self, request):
+
+        return self.list(request)
+    
+    def post(self,request):
+        data=request.data
+        serializer=self.serializer_class(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            
+            return Response(data=serializer.data,status=status.HTTP_201_CREATED)
+        return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
     
     
 

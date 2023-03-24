@@ -9,6 +9,8 @@ from .models import Pump
 from .models import Nozzle
 from .models import Meters
 from .models import Consumption
+from .models import Technician
+
 
 class SerailizerUser(serializers.ModelSerializer):
     model = User
@@ -19,7 +21,7 @@ class SerailizerUser(serializers.ModelSerializer):
 class SerailizerCompany(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['userid', 'companystatus', 'companyname', 'companyaddress', 'phonenumber',]
+        fields = ['usertype', 'companystatus', 'companyname', 'companyaddress', 'phonenumber',]
 
 
 
@@ -58,6 +60,11 @@ class SerailizerMeters(serializers.ModelSerializer):
 class SerailizerConsumption(serializers.ModelSerializer):
     class Meta:
         model =Consumption
+        fields = "__all__"
+
+class SerailizerTechnician(serializers.ModelSerializer):
+    class Meta:
+        model =Technician
         fields = "__all__"
 
 

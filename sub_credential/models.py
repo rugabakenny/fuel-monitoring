@@ -16,11 +16,22 @@ class Company(models.Model):
     companyaddress = models.CharField(null=True,max_length=255)
     phonenumber = models.IntegerField(default="-",null=True)
     companystatus = models.CharField(max_length=255,null=True)
-    userid = models.ForeignKey(User,on_delete=models.CASCADE)
+    usertype = models.ForeignKey(User,on_delete=models.CASCADE)
+    companystaff =models.CharField(null=True,max_length=255)
+    companystation =models.CharField(null=True,max_length=255)
+    stationmanagers =models.CharField(null=True,max_length=255)
+    companyrotation =models.CharField(null=True,max_length=255)
 
 
     def __str__(self):
         return self.companyname
+    
+
+
+class Technician(models.Model):
+    name = models.CharField(max_length = 255 ,null=True)  
+    companyname = models.CharField(max_length = 255 ,null=True)  
+    
     
 class Station(models.Model):
     stationname = models.CharField(max_length=255)
@@ -30,9 +41,12 @@ class Station(models.Model):
         return self.stationname
     
 
+    
+
 class island(models.Model):
     islandname = models.CharField(null=True,max_length=255)
     stationid = models.ForeignKey(Station,on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.islandname
@@ -40,6 +54,7 @@ class island(models.Model):
 class Tank(models.Model):
     tankname = models.CharField(max_length=255,null=True)
     fueltype = models.CharField(max_length=255,null=True)
+    
 
     def __str__(self):
         return self.tankname
@@ -47,6 +62,7 @@ class Tank(models.Model):
 class Pump(models.Model):
     pumpname = models.CharField(null=True,max_length=255)
     islandid = models.ForeignKey(island,on_delete=models.CASCADE)
+    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.pumpname
@@ -74,3 +90,4 @@ class Meters(models.Model):
 class Consumption(models.Model):
     meterid = models.ForeignKey(Meters,on_delete=models.CASCADE)
     meter_volume = models.CharField(max_length=255,null=True)
+
