@@ -46,14 +46,14 @@ class Station(models.Model):
 
     
 
-class island(models.Model):
-    islandname = models.CharField(null=True,max_length=255)
+class iland(models.Model):
+    ilandname = models.CharField(null=True,max_length=255)
     stationid = models.ForeignKey(Station,on_delete=models.CASCADE)
     technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
     
 
     def __str__(self):
-        return self.islandname
+        return self.ilandname
 
 class Tank(models.Model):
     tankname = models.CharField(max_length=255,null=True)
@@ -67,7 +67,7 @@ class Tank(models.Model):
 
 class Pump(models.Model):
     pumpname = models.CharField(null=True,max_length=255)
-    islandid = models.ForeignKey(island,on_delete=models.CASCADE)
+    ilandid = models.ForeignKey(iland,on_delete=models.CASCADE)
     technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
 
 
@@ -99,3 +99,4 @@ class Consumption(models.Model):
     meterid = models.ForeignKey(Meters,on_delete=models.CASCADE)
     meter_volume = models.CharField(max_length=255,null=True)
 
+ 

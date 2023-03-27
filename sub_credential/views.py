@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from rest_framework import permissions, generics, mixins, status
 from .serializers import SerailizerCompany, SerailizerUser
 from .serializers import SerailizerStation, SerailizerUser
-from .serializers import Serailizerisland, SerailizerUser
+from .serializers import Serailizeriland, SerailizerUser
 from .serializers import SerailizerTank, SerailizerUser
 from .serializers import SerailizerPump, SerailizerUser
 from .serializers import SerailizerNozzle, SerailizerUser
@@ -19,7 +19,7 @@ from django.contrib.auth import authenticate,login
 from rest_framework.authtoken.models import Token
 from .models import Company
 from .models import Station
-from .models import island
+from .models import iland
 from .models import Tank
 from .models import Pump
 from .models import Nozzle
@@ -104,10 +104,10 @@ class getStation(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMo
     
 
 
-class getisland(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
-    serializer_class= Serailizerisland
-    serializer_classes= Serailizerisland
-    queryset= island.objects.all()
+class getiland(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
+    serializer_class= Serailizeriland
+    serializer_classes= Serailizeriland
+    queryset= iland.objects.all()
     # lookup_field='id'
     def get(self, request):
 

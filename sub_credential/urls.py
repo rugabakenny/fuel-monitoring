@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
-from . views import LoginUser, getCompany , getStation ,getisland ,getTank , getPump ,getNozzle ,getMeters ,getConsumption ,getTechnician
+from . views import LoginUser, getCompany , getStation ,getiland ,getTank , getPump ,getNozzle ,getMeters ,getConsumption ,getTechnician
 
 
 # Wire up our API using automatic URL routing.
@@ -9,7 +9,7 @@ urlpatterns = [
     path('',LoginUser.as_view(),name="login"),
     path('getcompany/',getCompany.as_view()),
     path('getstation/',getStation.as_view()),
-    path('getisland/',getisland.as_view()),
+    path('getiland/',getiland.as_view()),
     path('gettank/',getTank.as_view()),
     path('getpump/',getPump.as_view()),
     path('getnozzle/',getNozzle.as_view()),

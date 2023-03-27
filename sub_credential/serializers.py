@@ -3,7 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from . models import Company
 from . models import Station
-from .models import island
+from .models import iland
 from .models import Tank
 from .models import Pump
 from .models import Nozzle
@@ -31,9 +31,9 @@ class SerailizerStation(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class Serailizerisland(serializers.ModelSerializer):
+class Serailizeriland(serializers.ModelSerializer):
     class Meta:
-        model = island
+        model = iland
         fields = "__all__"
 
 class SerailizerTank(serializers.ModelSerializer):
