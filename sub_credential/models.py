@@ -17,10 +17,7 @@ class Company(models.Model):
     phonenumber = models.IntegerField(default="-",null=True)
     companystatus = models.CharField(max_length=255,null=True)
     usertype = models.ForeignKey(User,on_delete=models.CASCADE)
-    companystaff =models.CharField(null=True,max_length=255)
-    companystation =models.CharField(null=True,max_length=255)
-    stationmanagers =models.CharField(null=True,max_length=255)
-    companyrotation =models.CharField(null=True,max_length=255)
+    
 
 
     def __str__(self):
@@ -49,7 +46,7 @@ class Station(models.Model):
 class iland(models.Model):
     ilandname = models.CharField(null=True,max_length=255)
     stationid = models.ForeignKey(Station,on_delete=models.CASCADE)
-    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
+   
     
 
     def __str__(self):
@@ -58,7 +55,7 @@ class iland(models.Model):
 class Tank(models.Model):
     tankname = models.CharField(max_length=255,null=True)
     fueltype = models.CharField(max_length=255,null=True)
-    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
+    
     
     
 
@@ -68,7 +65,7 @@ class Tank(models.Model):
 class Pump(models.Model):
     pumpname = models.CharField(null=True,max_length=255)
     ilandid = models.ForeignKey(iland,on_delete=models.CASCADE)
-    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
+   
 
 
     def __str__(self):
@@ -79,7 +76,7 @@ class Nozzle(models.Model):
     fueltype = models.CharField(max_length=255, null=True)
     pumpid = models.ForeignKey(Pump,on_delete=models.CASCADE)
     tankid = models.ForeignKey(Tank,on_delete=models.CASCADE)
-    technicianid = models.ForeignKey(Technician,on_delete=models.CASCADE,default=2)
+    
 
     def __str__(self):
         return self.nozzlename

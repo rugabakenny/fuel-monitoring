@@ -16,4 +16,5 @@ urlpatterns = [
     path('getmeters/',getMeters.as_view()),
     path('getconsumption/',getConsumption.as_view()),
     path('gettechnician/',getTechnician.as_view()),
+    
 ]
