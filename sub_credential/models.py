@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+# from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class Accountuser(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
@@ -10,6 +10,17 @@ class Accountuser(models.Model):
 
     def __str__(self) :
         return self.username 
+    
+# class User(AbstractUser):
+#     systemadmin = models.BooleanField(default=False)
+#     companyadmin = models.BooleanField(default=False)
+#     companytechnician = models.BooleanField(default=False)
+
+# class System_admin(models.Model):
+#     user =models.OneToOneField(User,on_delete=models.CASCADE, primary_key= True)
+#     addingcompany = models.CharField(null=True,max_length=255)
+    
+    
     
 class Company(models.Model):
     companyname = models.CharField(null=True,max_length=255)
