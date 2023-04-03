@@ -21,7 +21,7 @@ class SerailizerUser(serializers.ModelSerializer):
 class SerailizerCompany(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['usertype', 'companystatus', 'companyname', 'companyaddress', 'phonenumber',]
+        fields = ['id', 'usertype', 'companystatus', 'companyname', 'companyaddress', 'phonenumber',]
 
 
 
