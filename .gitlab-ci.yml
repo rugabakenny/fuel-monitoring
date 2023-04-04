@@ -51,7 +51,7 @@ pages:
     - cd doc
     - mkdir html
     # - pip install -r requirements.txt
-    - python manage.py runserver
+    - python manage.py
   artifacts:
     paths:
       - doc
