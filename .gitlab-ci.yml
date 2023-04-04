@@ -38,6 +38,7 @@ test:
 
 run:
   script:
+    - pip install -r requirements.txt
     - python manage.py bdist_wheel
     # an alternative approach is to install and run:
     - pip install dist/*
@@ -63,6 +64,5 @@ deploy:
   stage: deploy
   script:
   - echo "Define your deployment script!"
-  - pip install -r requirements.txt
   - python manage.py runserver
   environment: production
