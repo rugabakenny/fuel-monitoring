@@ -55,15 +55,7 @@ class LoginApi(ObtainAuthToken):
 
         })
 
-# class CompanyList(APIView):
-#     def get(self,request):
-#         company1= Company.objects.all()
-#         serializer=SerailizerCompany(company1, many= True)
-#         return Response(serializer.data)
 
-
-#     def post(self):
-#         pass
 
 class getCompany(generics.GenericAPIView, mixins.ListModelMixin):
     serializer_class= SerailizerCompany
