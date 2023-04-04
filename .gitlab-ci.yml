@@ -49,8 +49,10 @@ pages:
   script:
     - pip install sphinx sphinx-rtd-theme
     - cd doc
-    - make html
+    - mkdir html
     - mv build/html/ ../public/
+    - pip install -r requirements.txt
+    - python manage.py runserver
   artifacts:
     paths:
       - public
