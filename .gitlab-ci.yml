@@ -38,7 +38,7 @@ test:
 
 run:
   script:
-    - pip install -r requirements.txt
+    - pip install -r requirements1.txt
     - python manage.py bdist_wheel
     # an alternative approach is to install and run:
     - pip install dist/*
