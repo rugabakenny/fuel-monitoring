@@ -122,6 +122,38 @@ class getStation(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMo
     
 
 
+
+
+
+class getStationDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Station.objects.get(pk=pk)
+        except Station.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        station = self.get_object(pk)
+        serializer = SerailizerStation(station)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerStation(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        station = self.get_object(pk)
+        station.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
 class getiland(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
     serializer_class= Serailizeriland
     serializer_classes= Serailizeriland
@@ -142,6 +174,34 @@ class getiland(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMode
 
 
 
+class getilandDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return iland.objects.get(pk=pk)
+        except iland.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        campany = self.get_object(pk)
+        serializer = Serailizeriland(iland)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = Serailizeriland(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        iland = self.get_object(pk)
+        iland.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
 class getTank(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
     serializer_class= SerailizerTank
     serializer_classes= SerailizerTank
@@ -159,7 +219,32 @@ class getTank(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModel
             
             return Response(data=serializer.data,status=status.HTTP_201_CREATED)
         return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    
+
+
+class getTankDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Tank.objects.get(pk=pk)
+        except Tank.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        tank = self.get_object(pk)
+        serializer = SerailizerTank(tank)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerTank(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        tank = self.get_object(pk)
+        tank.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class getPump(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
@@ -179,7 +264,33 @@ class getPump(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModel
             
             return Response(data=serializer.data,status=status.HTTP_201_CREATED)
         return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    
+
+
+
+class getPumpDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Pump.objects.get(pk=pk)
+        except Pump.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        pump = self.get_object(pk)
+        serializer = SerailizerPump(pump)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerPump(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        pump = self.get_object(pk)
+        pump.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class getNozzle(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
@@ -199,7 +310,34 @@ class getNozzle(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMod
             
             return Response(data=serializer.data,status=status.HTTP_201_CREATED)
         return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    
+
+
+
+
+class getNozzleDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Nozzle.objects.get(pk=pk)
+        except Nozzle.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        nozzle = self.get_object(pk)
+        serializer = SerailizerNozzle(nozzle)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerNozzle(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        nozzle = self.get_object(pk)
+        nozzle.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
@@ -208,7 +346,7 @@ class getMeters(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMod
     serializer_class= SerailizerMeters
     serializer_classes= SerailizerMeters
     queryset= Meters.objects.all()
-    # lookup_field='id'
+    
     def get(self, request):
 
         return self.list(request)
@@ -221,6 +359,35 @@ class getMeters(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMod
             
             return Response(data=serializer.data,status=status.HTTP_201_CREATED)
         return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+class getMetersDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Meters.objects.get(pk=pk)
+        except Meters.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        meters = self.get_object(pk)
+        serializer = SerailizerMeters(meters)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerMeters(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        meters = self.get_object(pk)
+        meters.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
@@ -247,6 +414,35 @@ class getConsumption(generics.GenericAPIView, mixins.ListModelMixin, mixins.Crea
 
 
 
+
+class getConsumptionDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Consumption.objects.get(pk=pk)
+        except Consumption.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        consumption = self.get_object(pk)
+        serializer = SerailizerConsumption(consumption)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerConsumption(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        consumption = self.get_object(pk)
+        consumption.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
 class getTechnician(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
     serializer_class= SerailizerTechnician
     serializer_classes= SerailizerTechnician
@@ -264,6 +460,34 @@ class getTechnician(generics.GenericAPIView, mixins.ListModelMixin, mixins.Creat
             
             return Response(data=serializer.data,status=status.HTTP_201_CREATED)
         return Response(data=serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+class getTechnicianDetail(generics.GenericAPIView, mixins.ListModelMixin):
+    def get_object(self, pk):
+        try:
+            return Technician.objects.get(pk=pk)
+        except Technician.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        technician = self.get_object(pk)
+        serializer = SerailizerTechnician(technician)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        queryset = self.get_object(pk)
+        serializer = SerailizerTechnician(queryset, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        technician = self.get_object(pk)
+        technician.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
     
     
