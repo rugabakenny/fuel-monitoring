@@ -32,16 +32,15 @@ before_script:
 
 test:
   script:
-    - python manage.py test
+    - python3 manage.py runserver
     - pip install tox flake8  # you can also use tox
     - tox -e py,flake8
 
 run:
   script:
     - pip install -r requirements1.txt
-    - python manage.py bdist_wheel
-    # an alternative approach is to install and run:
-    - pip install dist/*
+    #- python manage.py bdist_wheel
+   #- pip install dist/*
     # run the command here
   artifacts:
     paths:
@@ -64,5 +63,5 @@ deploy:
   stage: deploy
   script:
   - echo "Define your deployment script!"
-  - python manage.py runserver
+  - python3 manage.py runserver
   environment: production

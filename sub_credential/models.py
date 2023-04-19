@@ -13,7 +13,7 @@ class Accountuser(models.Model):
     
 
     
-    
+
 class Company(models.Model):
     companyname = models.CharField(null=True,max_length=255)
     companyaddress = models.CharField(null=True,max_length=255)
@@ -25,7 +25,8 @@ class Company(models.Model):
 
     def __str__(self):
         return self.companyname
-    
+
+
 
 
 class Technician(models.Model):
