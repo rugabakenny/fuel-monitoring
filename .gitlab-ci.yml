@@ -38,11 +38,6 @@ test:
     - pip3 -V
     - pip3 install virtualenv
     - virtualenv --version
-    - virtualenv env
-    - . env/bin/activate
-    - pip install django
-    - django-admin --version
-    - pip install djangorestframework
 
 run:
   script:
@@ -68,5 +63,10 @@ deploy:
   stage: deploy
   script:
   - echo "Define your deployment script!"
-  - python3 manage.py runserver localhost:8001
+  - virtualenv env
+  - . env/bin/activate
+  - pip install django
+  - django-admin --version
+  - pip install djangorestframework
+  - python3 manage.py runserver
   environment: production
