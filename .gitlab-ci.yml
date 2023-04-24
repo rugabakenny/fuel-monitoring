@@ -26,29 +26,34 @@ cache:
 
 before_script:
   - python --version  # For debugging
-  - pip install virtualenv
+  - pip3 install virtualenv
   - virtualenv venv
   - source venv/bin/activate
 
 test:
   script:
-    - python3 manage.py runserver
-    - pip install tox flake8  # you can also use tox
-    - tox -e py,flake8
+    - sudo apt-get install python3
+    - python3 -V
+    - sudo apt-get install -y python3-pip
+    - pip3 -V
+    - pip3 install virtualenv
+    - virtualenv --version
+    - virtualenv env
+    - . env/bin/activate
+    - pip install django
+    - django-admin --version
+    - pip install djangorestframework
 
 run:
   script:
-    - pip install -r requirements1.txt
+    - pip install -r requirements.txt
     #- python manage.py bdist_wheel
    #- pip install dist/*
     # run the command here
-  artifacts:
-    paths:
-      - dist/*.whl
-
+  
 pages:
   script:
-    - pip install sphinx sphinx-rtd-theme
+    
     
   #   - cd doc
   #   - make html
@@ -63,5 +68,5 @@ deploy:
   stage: deploy
   script:
   - echo "Define your deployment script!"
-  - python3 manage.py runserver
+  - python3 manage.py runserver localhost:8001
   environment: production
