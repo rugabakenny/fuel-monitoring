@@ -17,6 +17,7 @@ getting company
  request should include session key in order to know who is requesting data and what to return
 ######################################################################################
 #######################################################################################
+Done
 user types
    { system admin
        funct
@@ -27,7 +28,7 @@ user types
          adding payment plan
          adding system technician
          
-    } == ???????
+    } == Done
 ######################################################################################
 #######################################################################################
    { company admin
@@ -35,7 +36,7 @@ user types
         adding company station
         adding company station managers
         adding company station dispenser and rotation
-   }== ???????
+   }== Done
 ######################################################################################
 #######################################################################################      
       {
@@ -52,7 +53,7 @@ user types
                      station pump(s)
                      station nozzles
           view station configuration of the company
-     } == ???????
+     } == Done
 ######################################################################################
 #######################################################################################
      {
