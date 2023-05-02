@@ -1,4 +1,4 @@
-users must have all be in relation with their functions
+`users must have all be in relation with their functions
 for login
     * we need to send username and password in json format
     return
