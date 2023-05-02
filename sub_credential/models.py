@@ -2,26 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 # from django.contrib.auth.models import AbstractUser
 # Create your models here.
-class Accountuser(models.Model):
+class Accountuser(models.Model): 
+    ACCOUNT_TYPE_CHOICES = [
+        ('company_admin', 'company_admin'),
+        ('company_staff', 'company_staff'),
+        ('company_techinician', 'company_techinician'),
+        ('station_manager', 'station_manager'),
+        ('station_dispenser', 'station_dispenser'),
+    ]
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     phonenumber = models.IntegerField(null=True,default="-")
-    usertype = models.CharField(null=True,max_length=255)
+    usertype = models.CharField(null=True, max_length=255, choices=ACCOUNT_TYPE_CHOICES)
     accountstatus = models.CharField(null=True,max_length=255)
 
-    def __str__(self) :
-        return self.username 
     
-# class User(AbstractUser):
-#     systemadmin = models.BooleanField(default=False)
-#     companyadmin = models.BooleanField(default=False)
-#     companytechnician = models.BooleanField(default=False)
 
-# class System_admin(models.Model):
-#     user =models.OneToOneField(User,on_delete=models.CASCADE, primary_key= True)
-#     addingcompany = models.CharField(null=True,max_length=255)
-    
-    
-    
 class Company(models.Model):
     companyname = models.CharField(null=True,max_length=255)
     companyaddress = models.CharField(null=True,max_length=255)
@@ -33,7 +28,8 @@ class Company(models.Model):
 
     def __str__(self):
         return self.companyname
-    
+
+
 
 
 class Technician(models.Model):
