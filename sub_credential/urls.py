@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
-from . views import LoginApi, getCompany ,getCompanyDetail, getStation ,getiland ,getTank , getPump ,getNozzle ,getMeters ,getConsumption ,getTechnician
+from . views import LoginApi, getCompany, getCompanyDetail, getStation ,getiland ,getTank , getPump ,getNozzle ,getMeters ,getConsumption ,getTechnician
 
 
 # Wire up our API using automatic URL routing.
